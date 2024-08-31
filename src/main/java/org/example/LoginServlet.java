@@ -28,7 +28,6 @@ public class LoginServlet extends HttpServlet {
     res.getWriter().println("You are welcome, "+userName);
     uniqueUsers.add(userName);
 
-
     }
     }
 
