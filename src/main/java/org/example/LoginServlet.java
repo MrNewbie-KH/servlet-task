@@ -15,7 +15,7 @@ import java.util.Set;
 // (path: /login) - valid users may be store in memory
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
-        Set <String> uniqueUsers = new HashSet<>();
+    Set <String> uniqueUsers = new HashSet<>();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
     String userName = req.getParameter("userName");
@@ -27,8 +27,7 @@ public class LoginServlet extends HttpServlet {
     session.setAttribute("userName",userName);
     res.getWriter().println("You are welcome, "+userName);
     uniqueUsers.add(userName);
-
-    }
+     }
     }
 
 }

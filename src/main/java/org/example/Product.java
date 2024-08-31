@@ -9,8 +9,6 @@ public class Product {
         this.price = price;
         this.createdBy = createdBy;
     }
-
-    // Getters and setters
     public String getName() {
         return name;
     }
