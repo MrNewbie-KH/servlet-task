@@ -1,0 +1,8 @@
+Create web application using servlets
+
+Servlet for login that creats a session (path: /login) - valid users may be store in memory
+Servlet for adding products (path: catalog/products method: post) and listing all products (path: catalog/products method: get)
+Servlet for listing products created by the logged-in user (path: catalog/my-products method: get)
+Servlet for displying statisitics like number of products, total price of all products (path: catalog/stats method: get)
+you may save produts in memory using List, Set or Map, but it should be shared a cross all users
+Filter to protect all paths starting with `catalog` preventing non logged-in users from accessing them
