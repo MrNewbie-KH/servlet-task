@@ -10,5 +10,9 @@ public  class RepositoryProducts {
     }
     public static void addProduct(Product product) {
         products.add(product);
+        System.out.println(products.size());
+        for (Product p : products) {
+            System.out.println(p.name);
+        }
     }
 }

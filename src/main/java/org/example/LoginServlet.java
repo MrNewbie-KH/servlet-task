@@ -15,19 +15,29 @@ import java.util.Set;
 // (path: /login) - valid users may be store in memory
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
-    Set <String> uniqueUsers = new HashSet<>();
+    Set<String> uniqueUsers = new HashSet<>();
+
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-    String userName = req.getParameter("userName");
-    if(uniqueUsers.contains(userName)) {
-    res.getWriter().println("Welcome back! "+ userName);
-    }
-    else{
-    HttpSession session = req.getSession();
-    session.setAttribute("userName",userName);
-    res.getWriter().println("You are welcome, "+userName);
-    uniqueUsers.add(userName);
-     }
+    protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+        String userName = req.getParameter("userName");
+        if (userName == null || userName.isEmpty()) {
+            req.setAttribute("errorMessage", "Please login first!");
+            req.getRequestDispatcher("/login.jsp").include(req, res);
+            return;
+        }
+        HttpSession session = req.getSession(false);
+        if (uniqueUsers.contains(userName)) {
+
+            session.setAttribute("userName", userName);
+            res.getWriter().println("Welcome back! " + userName);
+            req.getRequestDispatcher("/catalog/products").forward(req, res);
+
+        } else {
+            uniqueUsers.add(userName);
+            session.setAttribute("userName", userName);
+            res.getWriter().println("You are welcome, " + userName);
+            req.getRequestDispatcher("/catalog/products").forward(req, res);
+        }
     }
 
 }

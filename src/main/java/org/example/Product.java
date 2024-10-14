@@ -1,8 +1,8 @@
 package org.example;
 public class Product {
-    private String name;
-    private double price;
-    private String createdBy; // Username of the creator
+    public String name;
+    public double price;
+    public String createdBy; // Username of the creator
 
     public Product(String name, double price, String createdBy) {
         this.name = name;
